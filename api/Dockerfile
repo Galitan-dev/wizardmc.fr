@@ -3,7 +3,7 @@ RUN apk update
 RUN apk add git
 RUN apk add coreutils 
 
-LABEL name="wizardmc-note-api"
+LABEL name="wizardmc-api"
 LABEL version="1.0"
 
 ARG PORT
@@ -87,7 +87,6 @@ ADD "https://raw.githubusercontent.com/Galitan-dev/wizardmc.fr/master/api/packag
 RUN [ "yarn", "--ignore-platform" ]
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /cache/random
 RUN [ "node", "ace", "build" ]
-# RUN [ "node", "ace", "migration:run" ]
 
 ENV NODE_ENV production
 

@@ -3,12 +3,12 @@ services:
   api:
     container_name: wizardmc-api
     build:
-      context: .
-      dockerfile: api.dockerfile
+      context: ./api
+      dockerfile: Dockerfile
       args:
         PORT: 3333
         DB_CONNECTION: pg
-        DB_HOST: 127.0.0.1
+        DB_HOST: wizardmc-db
         DB_PORT: 5432
         DB_USER: api
         DB_NAME: wizardmc
@@ -19,9 +19,18 @@ services:
         REDIS_PORT: 6379
         REDIS_PASSWORD:
     ports:
-    - 3333:3333
+      - 3333:3333
     depends_on:
       - db
+  frontend:
+    container_name: wizardmc-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:300
+    depends_on:
+      - api
   db:
     container_name: wizardmc-db
     image: postgres
