@@ -5,24 +5,23 @@ services:
     build:
       context: .
       dockerfile: api.dockerfile
+      args:
+        PORT: 3333
+        DB_CONNECTION: pg
+        DB_HOST: 127.0.0.1
+        DB_PORT: 5432
+        DB_USER: api
+        DB_NAME: wizardmc
+        DB_PASSWORD: eVRYDgOKi9K9bzsZcqbRIPkl2Gr3aqYnqfAcIOzl0N2RpNGHbq22zB7Kb873Q5YiwOmzJ1q352Jr95C1TM/2+w==
+        DB_DEBUG: "false"
+        REDIS_CONNECTION: local
+        REDIS_HOST: 127.0.0.1
+        REDIS_PORT: 6379
+        REDIS_PASSWORD:
     ports:
     - 3333:3333
     depends_on:
       - db
-    
-    environment:
-      PORT: 3333
-      DB_CONNECTION: pg
-      DB_HOST: 127.0.0.1
-      DB_PORT: 5432
-      DB_USER: api
-      DB_NAME: wizardmc
-      DB_PASSWORD: eVRYDgOKi9K9bzsZcqbRIPkl2Gr3aqYnqfAcIOzl0N2RpNGHbq22zB7Kb873Q5YiwOmzJ1q352Jr95C1TM/2+w==
-      DB_DEBUG: "false"
-      REDIS_CONNECTION: local
-      REDIS_HOST: 127.0.0.1
-      REDIS_PORT: 6379
-      REDIS_PASSWORD:
   db:
     container_name: wizardmc-db
     image: postgres
