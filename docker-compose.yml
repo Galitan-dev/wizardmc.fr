@@ -12,7 +12,7 @@ services:
         DB_PORT: 5432
         DB_USER: api
         DB_NAME: wizardmc
-        DB_PASSWORD: eVRYDgOKi9K9bzsZcqbRIPkl2Gr3aqYnqfAcIOzl0N2RpNGHbq22zB7Kb873Q5YiwOmzJ1q352Jr95C1TM/2+w==
+        DB_PASSWORD: ${PG_PASSWORD}
         DB_DEBUG: "false"
         REDIS_CONNECTION: local
         REDIS_HOST: 127.0.0.1

@@ -6,12 +6,16 @@ RUN apk add coreutils
 LABEL name="wizardmc-frontend"
 LABEL version="1.0"
 
-ENV FRONTEND_URL=http://localhost:3000
-ENV API_URL=http://localhost:3333
-ENV ADMIN_URL=http://localhost:8080
-ENV CLOUD_URL=http://localhost:3333/cloud
-ENV STRIPE_PUBLIC_KEY=
-ENV RECAPTCHA_PUBLIC_KEY=
+ARG STRIPE_PUBLIC_KEY
+ARG RECAPTCHA_PUBLIC_KEY
+
+ENV STRIPE_PUBLIC_KEY $STRIPE_PUBLIC_KEY
+ENV RECAPTCHA_PUBLIC_KEY $RECAPTCHA_PUBLIC_KEY
+
+ENV FRONTEND_URL=http://wizardmc.fr
+ENV API_URL=http://api.wizardmc.fr
+ENV ADMIN_URL=http://admin.wizardmc.fr
+ENV CLOUD_URL=http://wizardmc.fr/cloud
 
 ENV NODE_ENV development
 
